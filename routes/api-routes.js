@@ -85,6 +85,22 @@ module.exports = function (app) {
           });
         
     });
+
+    app.get("/removeSaved/:id", function (req, res) {
+        db.Article.findOneAndUpdate({ _id: req.params.id }, { isSaved:false}, { new: true })
+        .then(function(dbresponse) {
+            // If we were able to successfully update an Article, send it back to the client
+           // res.json(dbArticle);
+           console.log("updated");
+           res.json(dbresponse);
+           
+          })
+          .catch(function(err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+          });
+        
+    });
     app.get("/mySavedArticles", function (req, res) {
         console.log("inside");
        db.Article.find({isSaved:true})
