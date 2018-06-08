@@ -6,7 +6,7 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 module.exports = function (app) {
     app.get("/", function (req, res) {
-        db.Article.find({})
+        db.Article.find({isSaved:false})
         .then(function(dbArticles) {
             // If we were able to successfully find Articles, send them back to the client
            var obj={
@@ -76,7 +76,7 @@ module.exports = function (app) {
             // If we were able to successfully update an Article, send it back to the client
            // res.json(dbArticle);
            console.log("updated");
-           console.log(dbArticle);
+           res.json(dbArticle);
            
           })
           .catch(function(err) {
