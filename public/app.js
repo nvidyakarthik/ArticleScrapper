@@ -40,7 +40,7 @@ $(document).on("click", "#delArticle", function() {
     });
 });
 
-//This is for modal showing message id
+//This is for modal showing with object id
 $(document).on('show.bs.modal', '#exampleModal', function(event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
   var articleId = button.data('id'); // Extract info from data-* attributes
@@ -48,4 +48,36 @@ $(document).on('show.bs.modal', '#exampleModal', function(event) {
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
   modal.find('.modal-title').text('Notes for Article : ' + articleId);
+  modal.find('.saveNoteBtn').attr('data-id',articleId);
 })
+
+// Whenever someone clicks a save note button
+$(document).on("click", ".saveNoteBtn", function() {
+ 
+  // Save the id from the button tag
+  var articleId = $(this).attr("data-id");
+ alert(articleId);
+  /*var s=$('#noNote').val();
+  alert(s); */
+  
+  // Run a POST request to change the note, using what's entered in the inputs
+  $.ajax({
+    method: "POST",
+    url: "/saveNote/" + articleId,
+    data: {
+      // Value taken from notes input
+      message: $("#notesinput").val().trim(),
+    }
+  })
+    // With that done
+    .then(function(data) {
+      // Log the response
+      console.log(data);
+      // Empty the notes section
+     // $("#noNote").value(data.message);
+    });
+
+  // Also, remove the values entered in the input and textarea for note entry
+  /* /$("#titleinput").val("");*/
+  
+});
