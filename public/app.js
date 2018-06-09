@@ -41,7 +41,7 @@ $(document).on("click", "#delArticle", function() {
 });
 
 //This is for modal showing with object id
-$(document).on('show.bs.modal', '#exampleModal', function(event) {
+$(document).on('show.bs.modal', '#notesModal', function(event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
   var articleId = button.data('id'); // Extract info from data-* attributes
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -72,7 +72,7 @@ $(document).on("click", ".saveNoteBtn", function() {
     // With that done
     .then(function(data) {
       // Log the response
-      console.log(data);
+      $('#notesModal').modal('hide');
       // Empty the notes section
      // $("#noNote").value(data.message);
     });
