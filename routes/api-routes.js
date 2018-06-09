@@ -156,6 +156,26 @@ app.get("/getNotes/:id", function(req, res) {
         res.json(err);
       });
   });
+
+  app.get("/deleteNote/:id", function (req, res) {
+        db.Article.update({},
+        {$pull:{notes:req.params.id}},
+        function(err,numeffected){
+            if(err)
+                return res.json(err);
+            db.Note.remove({_id:req.params.id})
+            .then(function(affectedRows){
+                console.log("affectedRows"+affectedRows);
+                res.json(affectedRows);
+
+            }) 
+            .catch(function(err) {
+             // If an error occurred, send it to the client
+                res.json(err);
+            });   
+               
+        });    
+    });
   
 
 };

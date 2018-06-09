@@ -63,7 +63,7 @@ $.ajax({
     if (data.notes.length!==0) {
       $("#notes-form").find("#noNotes").remove();
       $.each(data.notes, function( index, value ) {
-        $("#notes-form").append("<div class='well mynotes'>" + value.message + "</div>");
+        $("#notes-form").append("<div class='well mynotes'><span>" + value.message + "</span><span class='btn btn-danger delNoteBtn' id='"+value._id+"'>X</span></div>");
       });
     }
     else{
@@ -73,13 +73,11 @@ $.ajax({
   });
 });
 
+//This function is triggered when modal hides
 $(document).on('hidden.bs.modal', '#notesModal', function(event) {
-
   $(".mynotes").remove();
-  
   $('#notesinput').val('');
 });
-$('#notesModal').modal('handleUpdate')
 
 
 // Whenever someone clicks a save note button
@@ -112,3 +110,31 @@ $(document).on("click", ".saveNoteBtn", function() {
   /* /$("#titleinput").val("");*/
   
 });
+
+// Whenever someone clicks a save note button
+$(document).on("click", ".delNoteBtn", function() {
+ 
+  // Save the id from the button tag
+  var noteId = $(this).attr("id");
+ alert(noteId);
+  /*var s=$('#noNote').val();
+  alert(s); */
+  
+  // Run a POST request to change the note, using what's entered in the inputs
+  $.ajax({
+    method: "GET",
+    url: "/deleteNote/" + noteId,
+    })
+    // With that done
+    .then(function(data) {
+      // Log the response
+      $('#'+noteId).parent().remove();
+      // Empty the notes section
+     // $("#notesList").value(data.message);
+    });
+
+  // Also, remove the values entered in the input and textarea for note entry
+  /* /$("#titleinput").val("");*/
+  
+});
+
