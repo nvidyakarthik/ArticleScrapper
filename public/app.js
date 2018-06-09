@@ -76,6 +76,7 @@ $.ajax({
 //This function is triggered when modal hides
 $(document).on('hidden.bs.modal', '#notesModal', function(event) {
   $(".mynotes").remove();
+  $("#notes-form").find("#noNotes").remove();
   $('#notesinput').val('');
 });
 
