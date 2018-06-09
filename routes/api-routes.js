@@ -87,11 +87,11 @@ module.exports = function (app) {
     });
 
     app.get("/removeSaved/:id", function (req, res) {
-        db.Article.findOneAndUpdate({ _id: req.params.id }, { isSaved:false}, { new: true })
+        db.Article.remove({ _id: req.params.id })
         .then(function(dbresponse) {
             // If we were able to successfully update an Article, send it back to the client
            // res.json(dbArticle);
-           console.log("updated");
+           console.log("deleted");
            res.json(dbresponse);
            
           })
@@ -142,7 +142,7 @@ app.post("/saveNote/:id", function(req, res) {
   });
 
 // Route for grabbing a specific Article by id, populate it with it's note
-app.get("/getNote/:id", function(req, res) {
+app.get("/getNotes/:id", function(req, res) {
     // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
     db.Article.findOne({ _id: req.params.id })
       // ..and populate all of the notes associated with it

@@ -49,7 +49,38 @@ $(document).on('show.bs.modal', '#notesModal', function(event) {
   var modal = $(this)
   modal.find('.modal-title').text('Notes for Article : ' + articleId);
   modal.find('.saveNoteBtn').attr('data-id',articleId);
+ 
+// Now make an ajax call for the Article
+$.ajax({
+  method: "GET",
+  url: "/getNotes/" + articleId
 })
+  // With that done, add the note information to the page
+  .then(function(data) {
+    console.log(data);
+    alert(data.notes.length);
+    // checking if the article has notes
+    if (data.notes.length!==0) {
+      $("#notes-form").find("#noNotes").remove();
+      $.each(data.notes, function( index, value ) {
+        $("#notes-form").append("<div class='well mynotes'>" + value.message + "</div>");
+      });
+    }
+    else{
+      $("#notes-form").append("<div class='well' id='noNotes'>No Notes for this Article yet.</div>");
+
+    }
+  });
+});
+
+$(document).on('hidden.bs.modal', '#notesModal', function(event) {
+
+  $(".mynotes").remove();
+  
+  $('#notesinput').val('');
+});
+$('#notesModal').modal('handleUpdate')
+
 
 // Whenever someone clicks a save note button
 $(document).on("click", ".saveNoteBtn", function() {
@@ -74,7 +105,7 @@ $(document).on("click", ".saveNoteBtn", function() {
       // Log the response
       $('#notesModal').modal('hide');
       // Empty the notes section
-     // $("#noNote").value(data.message);
+     // $("#notesList").value(data.message);
     });
 
   // Also, remove the values entered in the input and textarea for note entry
