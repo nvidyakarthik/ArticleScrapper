@@ -51,7 +51,6 @@ module.exports = function (app) {
             // Then, we load that into cheerio and save it to $ for a shorthand selector
             var $ = cheerio.load(response.data);
             
-            let insertedDocs = [];
             // Now, we grab every h2 within an article tag, and do the following:
             $(".mod-copy").each(function (i, element) {
                 // Save an empty result object
@@ -76,10 +75,7 @@ module.exports = function (app) {
                     .then(function (dbArticle) {
                         // View the added result in the console
                         console.log(dbArticle);
-                        insertedDocs.push(dbArticle._id);
-                        console.log("((((((((((("+insertedDocs);
-                        //countRecords+=1;
-
+                       
                     })
                     .catch(function (err) {
                         // If an error occurred, send it to the client

@@ -113,11 +113,8 @@ $(document).on("click", ".saveNoteBtn", function() {
     // With that done
     .then(function(data) {
       // Log the response
-      //$('#notesModal').modal('hide');
-      $("#notes-form").find("#noNotes").remove();
-      $("#notes-form").prepend("<div class='well mynotes'><span>" + value.message + "</span><span class='glyphicon glyphicon-remove delNoteBtn' id='"+value._id+"'></span></div>");
-      // Empty the notes section
-     // $("#notesList").value(data.message);
+      $('#notesModal').modal('hide');
+      
     });
 
   // Also, remove the values entered in the input and textarea for note entry
