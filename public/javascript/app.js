@@ -41,7 +41,6 @@ $(document).on("click", "#delArticle", function() {
 //onclick function for scrape new articles
  // $(document).on("click", "#linkId", function() {
   function scrape(link){  
- alert("test");
   // Now make an ajax call for the Article
   $.ajax({
     method: "GET",

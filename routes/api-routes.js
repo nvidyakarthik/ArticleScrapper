@@ -46,8 +46,19 @@ module.exports = function (app) {
     // A GET route for scraping the livescience website
     app.get("/scrapeArticles", function (req, res) {
         // First, we grab the body of the html with request
-        
-        axios.get("https://www.livescience.com/environment?type=article").then(function (response) {
+        var criteria=[
+        "news",
+        "technology",
+        "health",
+        "environment",
+        "strange-news",
+        "animals",
+        "history",
+        "culture",
+       " space"
+        ];
+        var randomCriteria = criteria[Math.floor(Math.random()*criteria.length)];
+        axios.get("https://www.livescience.com/"+randomCriteria+"?type=article").then(function (response) {
             // Then, we load that into cheerio and save it to $ for a shorthand selector
             var $ = cheerio.load(response.data);
             
