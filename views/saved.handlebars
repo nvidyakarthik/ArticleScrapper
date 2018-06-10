@@ -6,9 +6,7 @@
                 <div class="col-xs-12 col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a href="{{link}}" target="_blank">{{headline}}</a>
-                        
-                                               
+                        <a href="{{link}}" target="_blank">{{headline}}</a>                                 
                     </div>
                     <div class="panel-body">
                       <p>{{summary}}</p>
@@ -17,6 +15,8 @@
                     </div>
                 </div>
                 </div>
+                {{else}}
+                  <div class="well emptyMessage col-xs-12">There is no Saved Articles !</div>
                 {{/each}}
             </ul>
         

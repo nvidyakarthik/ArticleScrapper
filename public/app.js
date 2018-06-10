@@ -36,6 +36,22 @@ $(document).on("click", "#delArticle", function() {
     .then(function(data) {
      //after success remove the panel 
      button.parent().parent().parent().remove();
+     location.reload();
+         
+    });
+});
+
+
+  $(document).on("click", "#linkId", function() {
+ 
+  // Now make an ajax call for the Article
+  $.ajax({
+    method: "GET",
+    url: "/scrapeArticles"
+  })
+    // With that done, add the note information to the page
+    .then(function(data) {
+     location.replace("/");
          
     });
 });
