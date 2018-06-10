@@ -98,16 +98,15 @@ $(document).on("click", ".saveNoteBtn", function() {
  
   // Save the id from the button tag
   var articleId = $(this).attr("data-id");
- /*var s=$('#noNote').val();
-  alert(s); */
-  
+  var noteText=$("#notesinput").val().trim();
+  if(noteText!==""){
   // Run a POST request to change the note, using what's entered in the inputs
   $.ajax({
     method: "POST",
     url: "/saveNote/" + articleId,
     data: {
       // Value taken from notes input
-      message: $("#notesinput").val().trim(),
+      message: noteText,
     }
   })
     // With that done
@@ -116,6 +115,7 @@ $(document).on("click", ".saveNoteBtn", function() {
       $('#notesModal').modal('hide');
       
     });
+  }
 
   // Also, remove the values entered in the input and textarea for note entry
   /* /$("#titleinput").val("");*/
