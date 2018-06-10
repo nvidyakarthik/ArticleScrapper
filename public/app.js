@@ -39,21 +39,25 @@ $(document).on("click", "#delArticle", function() {
 });
 
 //onclick function for scrape new articles
-  $(document).on("click", "#linkId", function() {
- 
+ // $(document).on("click", "#linkId", function() {
+  function scrape(link){  
+ alert("test");
   // Now make an ajax call for the Article
   $.ajax({
     method: "GET",
     url: "/scrapeArticles"
   })
     // With that done, add the note information to the page
-    .then(function(data) {
-      //alert(data.message)
-    location.replace("/");
-         
+    .then(function(data) {         
+      location.reload(true);   
     });
-});
+}
 
+/* //This function is triggered when modal hides
+$(document).on('hidden.bs.modal', '#alertModal', function(event) {
+  location.reload(true);
+});
+ */
 //This is for modal showing with object id
 $(document).on('show.bs.modal', '#notesModal', function(event) {
   var button = $(event.relatedTarget); // Button that triggered the modal

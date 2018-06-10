@@ -1,8 +1,9 @@
 .jumbotron {
     background-image:url('/images/hands.jpg');
-    height:500px;
+    height:450px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    margin-top:50px;
   }
 
   .navbar-default{
@@ -12,6 +13,11 @@
 }
 .panel{
   height: 235px;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover {
+  color: #ece2e2;
+  background-color: #557ca0;
 }
 .panel-default>.panel-heading {
   color: #333;
@@ -66,3 +72,4 @@ button#delArticle {
   text-align: center;
   font-size: 20px;
 }
+

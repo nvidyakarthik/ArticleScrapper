@@ -1,3 +1,19 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">News Scraper</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
+      <li><a href="/mySavedArticles"><span class="glyphicon glyphicon-floppy-saved"></span>&nbsp;Saved Articles</a></li>
+      <li><a href="/" onclick="scrape(this); return false;"><span class="glyphicon glyphicon-save"></span>&nbsp;New Articles</a></li>     
+    </ul>
+  </div>  
+</nav>
+<div class="jumbotron jumbotron-fluid">
+  
+</div>
 <div class="container">
     <div class="row">
        
@@ -17,7 +33,25 @@
                 {{else}}
                   <div class="well emptyMessage col-xs-12">Click on 'New Articles' to get started !</div>
                 {{/each}} 
-            </ul>
+            </ul>            
         
     </div>    
 </div>
+
+<!-- Modal -->
+  <div class="modal fade" id="alertModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p id="alertmessage"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>

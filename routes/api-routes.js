@@ -6,7 +6,7 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 module.exports = function (app) {
     app.get("/", function (req, res) {
-        db.Article.find({ isSaved: false })
+        db.Article.find({ isSaved: false }).sort({createdDate:-1})
             .then(function (dbArticles) {
                 // If we were able to successfully find Articles, send them back to the client
                 var obj = {
@@ -46,11 +46,12 @@ module.exports = function (app) {
     // A GET route for scraping the livescience website
     app.get("/scrapeArticles", function (req, res) {
         // First, we grab the body of the html with request
+        
         axios.get("https://www.livescience.com/environment?type=article").then(function (response) {
             // Then, we load that into cheerio and save it to $ for a shorthand selector
             var $ = cheerio.load(response.data);
-            var countRecords = 0;
-
+            
+            let insertedDocs = [];
             // Now, we grab every h2 within an article tag, and do the following:
             $(".mod-copy").each(function (i, element) {
                 // Save an empty result object
@@ -75,7 +76,9 @@ module.exports = function (app) {
                     .then(function (dbArticle) {
                         // View the added result in the console
                         console.log(dbArticle);
-                        countRecords+=1;
+                        insertedDocs.push(dbArticle._id);
+                        console.log("((((((((((("+insertedDocs);
+                        //countRecords+=1;
 
                     })
                     .catch(function (err) {
@@ -86,11 +89,11 @@ module.exports = function (app) {
                     });
             });
             
+            return true;
 
+        }).then(function(response){
+            return res.redirect("/");
         });
-        res.json({test:"message"});
-        
-
     });
 
     app.get("/articleSaved/:id", function (req, res) {
