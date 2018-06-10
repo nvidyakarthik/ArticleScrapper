@@ -53,11 +53,6 @@ $(document).on("click", "#delArticle", function() {
     });
 }
 
-/* //This function is triggered when modal hides
-$(document).on('hidden.bs.modal', '#alertModal', function(event) {
-  location.reload(true);
-});
- */
 //This is for modal showing with object id
 $(document).on('show.bs.modal', '#notesModal', function(event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
