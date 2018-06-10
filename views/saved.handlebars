@@ -1,21 +1,25 @@
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
-        
+           
             <ul>
                 {{#each savedArticleList}}
+                <div class="col-xs-12 col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <a href="{{link}}" target="_blank">{{headline}}</a>
-                        <button type="button" class="btn btn-danger" id="delArticle" data-id="{{_id}}">DELETE FROM SAVED</button>
-                        <button type="button" class="btn btn-success" id="notesArticle" data-toggle="modal" data-target="#notesModal" data-id="{{_id}}">ARTICLE NOTES</button>
+                        
                                                
                     </div>
-                    <div class="panel-body"><p>{{summary}}</p></div>
+                    <div class="panel-body">
+                      <p>{{summary}}</p>
+                      <button type="button" class="btn btn-success" id="delArticle" data-id="{{_id}}">REMOVE SAVED</button>
+                      <button type="button" class="btn btn-success" id="notesArticle" data-toggle="modal" data-target="#notesModal" data-id="{{_id}}">ARTICLE NOTES</button>
+                    </div>
+                </div>
                 </div>
                 {{/each}}
             </ul>
-        </div>
+        
     </div>    
 </div>
 

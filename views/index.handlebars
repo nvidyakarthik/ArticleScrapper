@@ -1,18 +1,21 @@
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
-        
-            <ul>
+       
                 {{#each dbArticle}}
+                 <div class="col-xs-12 col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a href="{{link}}" target="_blank">{{headline}}</a>
+                        <a href="{{link}}" target="_blank">{{headline}}</a>                        
+                    </div>
+                    <div class="panel-body">
+                        <p>{{summary}}</p>
                         <button type="button" class="btn btn-success" id="saveArticle" data-id="{{_id}}">SAVE ARTICLE</button>
                     </div>
-                    <div class="panel-body"><p>{{summary}}</p></div>
+                    
+                </div>
                 </div>
                 {{/each}}
             </ul>
-        </div>
+        
     </div>    
 </div>

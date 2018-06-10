@@ -14,7 +14,7 @@ $(document).on("click", "#saveArticle", function() {
     // With that done, add the note information to the page
     .then(function(data) {
      //after success remove the panel 
-     button.parent().parent().remove();
+     button.parent().parent().parent().remove();
          
     });
 });
@@ -35,7 +35,7 @@ $(document).on("click", "#delArticle", function() {
     // With that done, add the note information to the page
     .then(function(data) {
      //after success remove the panel 
-     button.parent().parent().remove();
+     button.parent().parent().parent().remove();
          
     });
 });
@@ -63,11 +63,11 @@ $.ajax({
     if (data.notes.length!==0) {
       $("#notes-form").find("#noNotes").remove();
       $.each(data.notes, function( index, value ) {
-        $("#notes-form").append("<div class='well mynotes'><span>" + value.message + "</span><span class='btn btn-danger delNoteBtn' id='"+value._id+"'>X</span></div>");
+        $("#notes-form").prepend("<div class='well mynotes'><span>" + value.message + "</span><span class='glyphicon glyphicon-remove delNoteBtn' id='"+value._id+"'></span></div>");
       });
     }
     else{
-      $("#notes-form").append("<div class='well' id='noNotes'>No Notes for this Article yet.</div>");
+      $("#notes-form").prepend("<div class='well' id='noNotes'>No Notes for this Article yet.</div>");
 
     }
   });

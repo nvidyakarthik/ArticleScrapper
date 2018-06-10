@@ -1,0 +1,53 @@
+.jumbotron {
+    background-image:url('/images/hands.jpg');
+    height:500px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .navbar-default{
+    color: #FFFFFF;
+    background-color: #24496b;
+    font-size: 17px;
+}
+.panel{
+  height: 235px;
+}
+.panel-default>.panel-heading {
+  color: #333;
+  background-color: #edeff0;
+  border-color: #d3dfea;
+}
+.btn-success {
+  color: #fff;
+  background-color: #5e85ac;
+  border-color: #5e85ac;
+  margin-bottom: 35px;
+  margin-left: 28px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.delNoteBtn {
+  color: #fff;
+  background-color: #5e85ac;
+  border-color: #5e85ac;
+  float: right;
+  padding: 3px;
+  /* margin-bottom: 35px; */
+  margin-right: 28px;
+  /* position: absolute; */
+  /* bottom: 0; */
+  /* right: -102px; */
+}
+.panel-default {
+  border-color: #d6dfe3;
+}
+
+button#delArticle {
+  margin-bottom: 35px;
+  margin-left: 28px;
+  position: absolute;
+  bottom: 0;
+  left: 145px;
+}
