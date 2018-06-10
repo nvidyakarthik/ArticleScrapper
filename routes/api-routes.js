@@ -63,9 +63,11 @@ module.exports = function (app) {
                 result.headline = parentDiv
                     .children("h2").children("a")
                     .text().trim();
-                result.summary = parentDiv
+                   
+                 var tempString= parentDiv
                     .children("p")
                     .text().trim();
+                    result.summary=tempString.replace('  Read More','');
 
 
                 // Create a new Article using the `result` object built from scraping
@@ -73,7 +75,7 @@ module.exports = function (app) {
                     .then(function (dbArticle) {
                         // View the added result in the console
                         console.log(dbArticle);
-                        //countRecords+=1;
+                        countRecords+=1;
 
                     })
                     .catch(function (err) {
@@ -83,9 +85,11 @@ module.exports = function (app) {
                         //res.json(err);
                     });
             });
+            
 
         });
-        res.json({});
+        res.json({test:"message"});
+        
 
     });
 

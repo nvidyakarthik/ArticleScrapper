@@ -3,9 +3,7 @@ $(document).on("click", "#saveArticle", function() {
  
   // Save the id from the button tag
   var thisId = $(this).attr("data-id");
-  alert(thisId);
   var button=$(this);
-
   // Now make an ajax call for the Article
   $.ajax({
     method: "GET",
@@ -24,7 +22,6 @@ $(document).on("click", "#delArticle", function() {
  
   // Save the id from the button tag
   var thisId = $(this).attr("data-id");
-  alert(thisId);
   var button=$(this);
 
   // Now make an ajax call for the Article
@@ -41,7 +38,7 @@ $(document).on("click", "#delArticle", function() {
     });
 });
 
-
+//onclick function for scrape new articles
   $(document).on("click", "#linkId", function() {
  
   // Now make an ajax call for the Article
@@ -51,7 +48,8 @@ $(document).on("click", "#delArticle", function() {
   })
     // With that done, add the note information to the page
     .then(function(data) {
-     location.replace("/");
+      //alert(data.message)
+    location.replace("/");
          
     });
 });
@@ -74,7 +72,6 @@ $.ajax({
   // With that done, add the note information to the page
   .then(function(data) {
     console.log(data);
-    alert(data.notes.length);
     // checking if the article has notes
     if (data.notes.length!==0) {
       $("#notes-form").find("#noNotes").remove();
@@ -102,8 +99,7 @@ $(document).on("click", ".saveNoteBtn", function() {
  
   // Save the id from the button tag
   var articleId = $(this).attr("data-id");
- alert(articleId);
-  /*var s=$('#noNote').val();
+ /*var s=$('#noNote').val();
   alert(s); */
   
   // Run a POST request to change the note, using what's entered in the inputs
@@ -118,7 +114,9 @@ $(document).on("click", ".saveNoteBtn", function() {
     // With that done
     .then(function(data) {
       // Log the response
-      $('#notesModal').modal('hide');
+      //$('#notesModal').modal('hide');
+      $("#notes-form").find("#noNotes").remove();
+      $("#notes-form").prepend("<div class='well mynotes'><span>" + value.message + "</span><span class='glyphicon glyphicon-remove delNoteBtn' id='"+value._id+"'></span></div>");
       // Empty the notes section
      // $("#notesList").value(data.message);
     });
@@ -133,10 +131,6 @@ $(document).on("click", ".delNoteBtn", function() {
  
   // Save the id from the button tag
   var noteId = $(this).attr("id");
- alert(noteId);
-  /*var s=$('#noNote').val();
-  alert(s); */
-  
   // Run a POST request to change the note, using what's entered in the inputs
   $.ajax({
     method: "GET",
