@@ -13,6 +13,7 @@
 }
 .panel{
   height: 235px;
+  box-shadow:0 2px 2px #ccc;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover {
