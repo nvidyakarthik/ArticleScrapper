@@ -12,7 +12,9 @@ $(document).on("click", "#saveArticle", function() {
     // With that done, add the note information to the page
     .then(function(data) {
      //after success remove the panel 
-     button.parent().parent().parent().remove();
+     //button.parent().parent().parent().remove();
+     button.text("SAVED !!!");
+     button.attr('disabled','disabled');
          
     });
 });
