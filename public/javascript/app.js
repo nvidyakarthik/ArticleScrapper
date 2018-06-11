@@ -59,7 +59,7 @@ $(document).on('show.bs.modal', '#notesModal', function(event) {
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
-  modal.find('.modal-title').text('Notes for Article : ' + articleId);
+  modal.find('.modal-title').text('Article Notes');
   modal.find('.saveNoteBtn').attr('data-id',articleId);
  
 // Now make an ajax call for the Article
