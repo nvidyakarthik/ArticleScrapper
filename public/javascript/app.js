@@ -35,10 +35,16 @@ $(document).on("click", "#delArticle", function() {
     .then(function(data) {
      //after success remove the panel 
      button.parent().parent().parent().remove();
-     location.reload();
+     //console.log(data.message);
+      $("#alertModal").modal("show");
+    });    
          
-    });
 });
+
+/* //This function is triggered when modal hides
+$(document).on('hidden.bs.modal', '#alertModal', function(event) {
+  location.reload();
+}) */
 
 //onclick function for scrape new articles
  // $(document).on("click", "#linkId", function() {
